@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 
+
 def train_autoencoder(model, dataset, epochs=5, batch_size=128):
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
@@ -17,13 +18,7 @@ def train_autoencoder(model, dataset, epochs=5, batch_size=128):
 
 
 def train_classifier(
-    model,
-    dataset,
-    epochs=20,
-    batch_size=128,
-    lr=1e-3,
-    device="cpu",
-    seed=42
+    model, dataset, epochs=20, batch_size=128, lr=1e-3, device="cpu", seed=42
 ):
     g = torch.Generator()
     g.manual_seed(seed)
@@ -51,8 +46,10 @@ def train_classifier(
             correct += preds.eq(y).sum().item()
             total += y.size(0)
 
-        acc = 100. * correct / total
-        print(f"Epoch {epoch+1}/{epochs} - Loss: {total_loss/len(loader):.4f} - Acc: {acc:.2f}%")
+        acc = 100.0 * correct / total
+        print(
+            f"Epoch {epoch+1}/{epochs} - Loss: {total_loss/len(loader):.4f} - Acc: {acc:.2f}%"
+        )
 
 
 def evaluate_classifier(model, dataset, batch_size=128, device="cpu"):
@@ -76,6 +73,6 @@ def evaluate_classifier(model, dataset, batch_size=128, device="cpu"):
             total += y.size(0)
 
     avg_loss = total_loss / len(loader)
-    accuracy = 100. * correct / total
+    accuracy = 100.0 * correct / total
 
     return avg_loss, accuracy

@@ -5,6 +5,7 @@ import torch.nn.functional as F
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 class CIFAR10CNN(nn.Module):
     def __init__(self, num_classes=10):
         super().__init__()
@@ -46,4 +47,3 @@ class CIFAR10CNN(nn.Module):
         x = self.fc2(x)
 
         return x
-

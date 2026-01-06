@@ -2,6 +2,7 @@ import torch
 import numpy as np
 import torch.nn.functional as F
 
+
 def extract_attack_features(model, dataset, device, batch_size=128):
     loader = torch.utils.data.DataLoader(dataset, batch_size=batch_size)
     model.eval()

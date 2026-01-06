@@ -24,14 +24,8 @@ def per_sample_ce_loss(model, dataset, device="cpu", batch_size=128):
 
 def sweep_thresholds2(in_losses, out_losses, n_thresh=50):
     losses = np.concatenate([in_losses, out_losses])
-    labels = np.concatenate([
-        np.ones_like(in_losses),
-        np.zeros_like(out_losses)
-    ])
-    thresholds = np.quantile(
-        losses,
-        np.linspace(0.01, 0.99, n_thresh)
-    )
+    labels = np.concatenate([np.ones_like(in_losses), np.zeros_like(out_losses)])
+    thresholds = np.quantile(losses, np.linspace(0.01, 0.99, n_thresh))
     precisions = []
     recalls = []
     for thr in thresholds:
@@ -42,13 +36,24 @@ def sweep_thresholds2(in_losses, out_losses, n_thresh=50):
     return thresholds, np.array(precisions), np.array(recalls)
 
 
-
 def plot_loss_distributions(in_losses, out_losses, bins=60, max_loss=0.01):
     plt.figure()
-    plt.hist(in_losses, bins=bins, range=(0, max_loss),
-             density=True, alpha=0.6, label="Members (IN)")
-    plt.hist(out_losses, bins=bins, range=(0, max_loss),
-             density=True, alpha=0.6, label="Non-members (OUT)")
+    plt.hist(
+        in_losses,
+        bins=bins,
+        range=(0, max_loss),
+        density=True,
+        alpha=0.6,
+        label="Members (IN)",
+    )
+    plt.hist(
+        out_losses,
+        bins=bins,
+        range=(0, max_loss),
+        density=True,
+        alpha=0.6,
+        label="Non-members (OUT)",
+    )
     plt.xlabel("cross-entropy loss (clipped)")
     plt.ylabel("density")
     plt.title("Loss distribution: IN vs OUT")
@@ -68,13 +73,9 @@ def plot_precision_recall_vs_threshold2(thresholds, precisions, recalls):
     plt.show()
 
 
-
 def plot_roc_and_auc2(in_losses, out_losses):
-    scores = -np.concatenate([in_losses, out_losses])  
-    labels = np.concatenate([
-        np.ones_like(in_losses),
-        np.zeros_like(out_losses)
-    ])
+    scores = -np.concatenate([in_losses, out_losses])
+    labels = np.concatenate([np.ones_like(in_losses), np.zeros_like(out_losses)])
     fpr, tpr, _ = roc_curve(labels, scores)
     auc = roc_auc_score(labels, scores)
     plt.figure()

@@ -20,7 +20,7 @@ def max_posterior_scores(model, dataset, device="cpu", batch_size=128):
 
 
 def sweep_thresholds(in_scores, out_scores, n_thresholds=50):
-    """Compute precision/recall for a range of thresholds """
+    """Compute precision/recall for a range of thresholds"""
     scores = np.concatenate([in_scores, out_scores])
     labels = np.concatenate([np.ones_like(in_scores), np.zeros_like(out_scores)])
     thresholds = np.linspace(scores.min(), scores.max(), n_thresholds)
