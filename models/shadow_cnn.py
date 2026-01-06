@@ -1,7 +1,8 @@
 import torch.nn as nn
 import torch.nn.functional as F
 
-"""Slightly Different architecture from the target_cnn model, as the attacker is in a black-box situation 
+"""
+Slightly Different architecture from the target_cnn model, as the attacker is in a black-box situation 
 (or maybe grey-box as he knows the structure)
 """
 
