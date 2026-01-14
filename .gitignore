@@ -24,3 +24,13 @@ env/
 .idea/
 .DS_Store
 
+# Data / datasets
+data/
+datasets/
+*.tar.gz
+*.zip
+*.csv
+*.npy
+*.npz
+*.pt
+*.pth
