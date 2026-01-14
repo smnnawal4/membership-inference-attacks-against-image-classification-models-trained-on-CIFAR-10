@@ -56,14 +56,14 @@ The complete workflow is available in `notebooks/main.ipynb`. It includes:
 ## Results
 
 **Target Model Performance**:
-- Train accuracy: ~98.33%
-- Test accuracy: ~67.47%
+- Train accuracy: ~98.7%
+- Test accuracy: ~72.3%
 
 **Attack Performance**:
-- **Confidence-based**: AUC ~0.632
-- **Loss-based**: AUC ~0.679
-- **Shadow-based (synthetic data)**: Accuracy ~60.05%
-- **Shadow-based (noisy data)**: Accuracy ~55.7%
+- **Confidence-based**: AUC ~0.67
+- **Loss-based**: AUC ~0.67
+- **Shadow-based (synthetic data)**: Accuracy ~64%
+- **Shadow-based (noisy data)**: Accuracy ~57.9%
 
 ## References
 
