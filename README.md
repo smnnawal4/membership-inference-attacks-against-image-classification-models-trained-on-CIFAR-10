@@ -62,8 +62,8 @@ The complete workflow is available in `notebooks/main.ipynb`. It includes:
 **Attack Performance**:
 - **Confidence-based**: AUC ~0.67
 - **Loss-based**: AUC ~0.67
-- **Shadow-based (synthetic data)**: Accuracy ~64%
-- **Shadow-based (noisy data)**: Accuracy ~57.9%
+- **Shadow-based (synthetic data)**:  AUC ~0.64
+- **Shadow-based (noisy data)**: AUC ~0.61
 
 ## References
 
